@@ -2,12 +2,12 @@
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-# with open('trained_model.pkl', 'rb') as f:
-#     model = pickle.load(f)
+with open('trained_model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
+ @app.route('/')
+ def index():
+     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
