@@ -5,8 +5,8 @@ with open('trained_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 @app.route('/')
- def index():
-     return render_template('index.html')
+def index():
+    return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
