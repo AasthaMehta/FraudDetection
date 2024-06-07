@@ -1,9 +1,12 @@
+# check.py
+
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
+import requests
 
 class FraudDetectionModel:
     def __init__(self):
@@ -11,6 +14,11 @@ class FraudDetectionModel:
         self.imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
         self.scaler = StandardScaler()
         self.trained = False
+
+    def download_data(self, url, file_path):
+        response = requests.get(url)
+        with open(file_path, 'wb') as f:
+            f.write(response.content)
 
     def load_data(self, train_path, test_path):
         chunksize = 10 ** 6
