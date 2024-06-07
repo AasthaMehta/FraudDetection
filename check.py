@@ -1,5 +1,3 @@
-# check.py
-
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
@@ -21,16 +19,8 @@ class FraudDetectionModel:
             f.write(response.content)
 
     def load_data(self, train_path, test_path):
-        chunksize = 10 ** 6
-        chunks = []
-        for chunk in pd.read_csv(train_path, chunksize=chunksize):
-            chunks.append(chunk)
-        self.df = pd.concat(chunks, axis=0)
-        
-        chunks_test = []
-        for chunk in pd.read_csv(test_path, chunksize=chunksize):
-            chunks_test.append(chunk)
-        self.df_test = pd.concat(chunks_test, axis=0)
+        self.df = pd.read_csv(train_path)
+        self.df_test = pd.read_csv(test_path)
         
         self._preprocess_data()
 
