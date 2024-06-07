@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
@@ -8,7 +8,7 @@ import requests
 
 class FraudDetectionModel:
     def __init__(self):
-        self.model = LogisticRegression(max_iter=1000)
+        self.model = DecisionTreeClassifier()
         self.imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
         self.scaler = StandardScaler()
         self.trained = False
