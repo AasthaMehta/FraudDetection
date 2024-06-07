@@ -8,13 +8,13 @@ app = Flask(__name__)
 # Initialize the model
 model = FraudDetectionModel()
 
-# Define the URLs to your datasets in the GitHub repository
-train_data_url = 'https://github.com/yourusername/yourrepo/raw/branchname/path_to_train_data.csv'
-test_data_url = 'https://github.com/yourusername/yourrepo/raw/branchname/path_to_test_data.csv'
+# Define the URLs to your smaller datasets in the GitHub repository
+train_data_url = 'https://raw.githubusercontent.com/AasthaMehta/FraudDetection/main/train_data.csv'
+test_data_url = 'https://raw.githubusercontent.com/AasthaMehta/FraudDetection/main/test_data.csv'
 
 # Define the file paths where the datasets will be saved locally
-train_file_path = 'train_data.csv'
-test_file_path = 'test_data.csv'
+train_file_path = 'small_train_data.csv'
+test_file_path = 'small_test_data.csv'
 
 # Download the data
 model.download_data(train_data_url, train_file_path)
