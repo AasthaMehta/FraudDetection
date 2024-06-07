@@ -1,12 +1,27 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import pandas as pd
 from check import FraudDetectionModel
+import os
 
 app = Flask(__name__)
 
 # Initialize the model
 model = FraudDetectionModel()
-model.load_data('path_to_train_data.csv', 'path_to_test_data.csv')  # Provide the correct paths
+
+# Define the URLs to your datasets in the GitHub repository
+train_data_url = 'https://github.com/yourusername/yourrepo/raw/branchname/path_to_train_data.csv'
+test_data_url = 'https://github.com/yourusername/yourrepo/raw/branchname/path_to_test_data.csv'
+
+# Define the file paths where the datasets will be saved locally
+train_file_path = 'train_data.csv'
+test_file_path = 'test_data.csv'
+
+# Download the data
+model.download_data(train_data_url, train_file_path)
+model.download_data(test_data_url, test_file_path)
+
+# Load and train the model
+model.load_data(train_file_path, test_file_path)
 model.train_model()
 
 @app.route('/')
