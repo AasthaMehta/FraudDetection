@@ -1,8 +1,5 @@
-
 services:
-  - name: my-web-service
+  - name: FraudDetection
     type: web
-    plan: starter
-  - name: my-background-worker
-    type: pserv
-    plan: free
+    runtime: python
+    startCommand: "python app.py"
