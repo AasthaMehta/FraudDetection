@@ -1,0 +1,8 @@
+
+services:
+  - name: my-web-service
+    type: web
+    plan: starter
+  - name: my-background-worker
+    type: pserv
+    plan: free
